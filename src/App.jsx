@@ -9,6 +9,7 @@ import MyProfile from './pages/MyProfile';
 import MyAppoinyments from './pages/MyAppoinyments';
 import Appointment from './pages/Appointment';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 function App() {
   return (
     <div className='mx-4 sm:mx-[10%]'>
@@ -24,6 +25,7 @@ function App() {
         <Route path='/my-appoinyments' element={<MyAppoinyments/>}/>
         <Route path='/appointment/:docId' element={<Appointment/>}/>
       </Routes>
+      <Footer/>
     </div>
   )
 }

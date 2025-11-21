@@ -1,8 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
-.active hr{
-   @apply block 
+
+*{
+   font-family: outfit;
 }
-::-webkit-scrollbar{
+
+.active hr {
+   @apply block
+}
+
+::-webkit-scrollbar {
    @apply hidden
 }

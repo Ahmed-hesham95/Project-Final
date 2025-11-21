@@ -1,7 +1,8 @@
 import React from 'react'
 import Header from '../components/Header'
 import SpecialityMenu from '../components/SpecialityMenu.jsx'
-import TopDoctors from '../components/TopDoctors'
+import TopDoctors from '../components/TopDoctors.jsx'
+import Banner from '../components/Banner.jsx'
 
 function Home() {
   return (
@@ -9,6 +10,7 @@ function Home() {
         <Header/>
         <SpecialityMenu/>
         <TopDoctors/>
+        <Banner/>
     </div>
   )
 }
