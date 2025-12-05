@@ -17,21 +17,21 @@ function Footer() {
         </div>
         {/* Center */}
         <div>
-            <p className="text-xl font-medium mb-5">COMPANY</p>
-            <ul className="flex flex-col gap-2 text-gray-600">
-                <li>Home</li>
-                <li>About us</li>
-                <li>Contact us</li>
-                <li>Privacy policy</li>
-            </ul>
+          <p className="text-xl font-medium mb-5">COMPANY</p>
+          <ul className="flex flex-col gap-2 text-gray-600">
+            <li>Home</li>
+            <li>About us</li>
+            <li>Contact us</li>
+            <li>Privacy policy</li>
+          </ul>
         </div>
         {/* Right */}
         <div>
-            <p className="text-xl font-medium mb-5">GET IN TOUCH</p>
-            <ul className="flex flex-col gap-2 text-gray-600">
-                <li>+1-212-456-7890</li>
-                <li>greatstackdev@gmail.com</li>
-            </ul>
+          <p className="text-xl font-medium mb-5">GET IN TOUCH</p>
+          <ul className="flex flex-col gap-2 text-gray-600">
+            <li>+1-212-456-7890</li>
+            <li>greatstackdev@gmail.com</li>
+          </ul>
         </div>
       </div>
       {/* Copyright */}
