@@ -1,16 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useMemo } from 'react'
 import { AppContext } from '../Context/AppContext'
 import { useNavigate } from 'react-router-dom'
 
 const RelatedDoctors = ({ speciality, docId }) => {
+  /* eslint-disable react-hooks/exhaustive-deps */
   const { doctors } = useContext(AppContext)
   const navigate = useNavigate()
-  const [relDoc, setrelDocs] = useState([])
-  useEffect(() => {
+
+  const relDoc = useMemo(() => {
     if (doctors.length > 0 && speciality) {
-      const doctorsData = doctors.filter((doc) => doc.speciality === speciality && doc._id !== docId)
-      setrelDocs(doctorsData)
+      return doctors.filter((doc) => doc.speciality === speciality && doc._id !== docId)
     }
+    return []
   }, [doctors, speciality, docId])
   return (
     <div className="flex flex-col items-center gap-4 my-16 text-gray-900 md:mx-10">
@@ -33,6 +34,6 @@ const RelatedDoctors = ({ speciality, docId }) => {
       <button onClick={() => { navigate('/doctors'); scrollTo(0, 0) }} className="bg-blue-50 text-gray-600 px-12 py-3 rounded-full mt-10 cursor-pointer">More</button>
     </div>
   )
-}
+};
 
 export default RelatedDoctors

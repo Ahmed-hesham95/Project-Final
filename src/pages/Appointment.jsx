@@ -1,23 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../Context/AppContext";
 import { assets } from "../assets/assets";
 import RelatedDoctors from "../components/RelatedDoctors";
 
-const Appointment = () => {
+export default function Appointment() {
   const { docId } = useParams();
   const { doctors, currencySymbol } = useContext(AppContext);
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-  const [docInfo, setDocInfo] = useState(null);
+  const docInfo = doctors.find((doc) => doc._id === docId);
   const [docSlots, setDocSlots] = useState([]);
   const [slotIndex, setSlotIndex] = useState(0);
   const [slotTime, setSlotTime] = useState("");
-  const fetchDocInfo = async () => {
-    const docInfo = doctors.find((doc) => doc._id === docId);
-    setDocInfo(docInfo);
-  };
+
   const getAvailableSlots = async () => {
-    setDocSlots([]);
+    let allSlots = [];
     // getting current date
     let today = new Date();
     for (let i = 0; i < 7; i++) {
@@ -25,7 +22,7 @@ const Appointment = () => {
       let currentDate = new Date(today);
       currentDate.setDate(today.getDate() + i);
       // setting end time of the date with index
-      let endTime = new Date();
+      let endTime = new Date(today);
       endTime.setDate(today.getDate() + i);
       endTime.setHours(21, 0, 0, 0);
       // setting hours
@@ -50,15 +47,16 @@ const Appointment = () => {
         });
         currentDate.setMinutes(currentDate.getMinutes() + 30);
       }
-      setDocSlots((prev) => [...prev, timeSlots])
+      allSlots.push(timeSlots);
     }
+    setDocSlots(allSlots);
   };
+
   useEffect(() => {
-    fetchDocInfo();
-  }, [doctors, docId]);
-  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     getAvailableSlots();
   }, [docInfo]);
+
   useEffect(() => {
     console.log(docSlots);
   }, [docSlots]);
@@ -71,14 +69,14 @@ const Appointment = () => {
             <img
               className="bg-primary w-full sm:max-w-72 rounded-lg"
               src={docInfo?.image}
-              alt=""
+              alt="doc_image"
             />
           </div>
           <div className="flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 -mt-20 sm:mt-0">
             {/* Doc Info  */}
             <p className="flex items-center gap-2 text-2xl font-medium text-gray-900">
               {docInfo.name}
-              <img className="w-5" src={assets.verified_icon} alt="" />
+              <img className="w-5" src={assets.verified_icon} alt="verified_icon" />
             </p>
             <div className="flex items-center gap-2 text-sm mt-1 text-gray-600">
               <p>
@@ -91,7 +89,7 @@ const Appointment = () => {
             {/* Doc About */}
             <div>
               <p className="flex items-center gap-1 text-sm font-medium text-gray-900 mt-3">
-                About <img src={assets.info_icon} alt="" />
+                About <img src={assets.info_icon} alt="info_icon" />
               </p>
               <p className="text-sm text-gray-500 max-w-[700px] mt-1">
                 {docInfo.about}
@@ -133,4 +131,4 @@ const Appointment = () => {
   );
 };
 
-export default Appointment;
+Appointment;

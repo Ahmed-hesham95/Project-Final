@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom';
 import Home from "./pages/Home";
 import Doctors from './pages/Doctors';
 import Login from './pages/Login';
@@ -6,16 +6,38 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import MyProfile from './pages/MyProfile';
 import MyAppointments from './pages/MyAppointments';
+import MainLayout from './layouts/MainLayout';
 import Appointment from './pages/Appointment';
-import Mainlayout from './layouts/mainlayout';
 import { Toaster } from 'react-hot-toast';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
   return (
-    <div className='mx-0 sm:mx-0 md:mx-[-10%] lg:mx-[10%]'>
-      <Toaster />
+    <div className='px-0 sm:px-0 md:px-[-10%] lg:px-[10%]'>
+      <Toaster position='top-right' toastOptions={{
+        className: 'border-2',
+        success: {
+          duration: 5000,
+          style: {
+            borderRadius: '10px',
+            padding: '1rem',
+            background: 'white',
+            color: 'green',
+          },
+        },
+        error: {
+          duration: 5000,
+          style: {
+            borderRadius: '10px',
+            padding: '1rem',
+            background: 'white',
+            color: 'red',
+          },
+        },
+      }}
+        reverseOrder={false} gutter={24} />
       <Routes>
-        <Route element={<Mainlayout />}>
+        <Route element={<MainLayout />}>
           <Route index path='/' element={<Home />} />
           <Route path='/doctors' element={<Doctors />} />
           <Route path='/doctors/:speciality' element={<Doctors />} />
@@ -26,10 +48,10 @@ function App() {
           <Route path="/appointment/:docId" element={<Appointment />} />
         </Route>
         <Route path='/login' element={<Login />} />
-        <Route path='*' element={<error className='h-[40vh] w-full flex justify-center items-center'><h1 className='text-4xl text-white h-fit w-fit rounded-[2em] bg-red-500 px-4 py-2'>404 ERROR Page Is Not Found</h1></error>} />
+        <Route path='*' element={<ErrorPage />} />
       </Routes>
     </div>
-  )
-}
+  );
+};
 
 export default App

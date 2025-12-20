@@ -1,10 +1,14 @@
-import { useState } from "react";
 import { assets } from "../assets/assets";
 import { NavLink, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 const Navbar = () => {
   const navigate = useNavigate();
-  // const [showMenu, setShowMenu] = useState(false);
-  const [token, setToken] = useState(true);
+  const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+  const handleLogout = () => {
+    localStorage.clear('token') || sessionStorage.clear('token');
+    navigate('./login');
+    toast.error('Logged out!!');
+  }
   return (
     <div className="flex items-center justify-between text-sm text-black py-4 mb-5 border-b border-b-gray-400">
       <img onClick={() => navigate('/')} className="w-44 cursor-pointer" src={assets.logo} alt="Logo" />
@@ -36,7 +40,7 @@ const Navbar = () => {
                 <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
                   <p onClick={() => navigate('my-profile')} className="hover:text-black cursor-pointer">My Profile</p>
                   <p onClick={() => navigate('my-appoinyments')} className="hover:text-black cursor-pointer">My Appointments</p>
-                  <p onClick={() => { setToken(false); localStorage.clear('hasLogged') || sessionStorage.clear('hasLogged'); navigate('./login') }} className="hover:text-black cursor-pointer">Logout</p>
+                  <p onClick={handleLogout} className="hover:text-black cursor-pointer">Logout</p>
                 </div>
               </div>
             </div>

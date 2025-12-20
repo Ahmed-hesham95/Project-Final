@@ -1,53 +1,70 @@
+/* Styles for the main login container, setting background and centering content */
+.login-container {
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styles for the form box, including text color, alignment, and transition effects */
 .form-box {
     color: #333;
     text-align: center;
     transition: 0.6s ease-in-out 1.2s, visibility 0s 1s;
 }
 
+/* Adjusts the position of the form box when the container has the 'active' class */
 .container.active .form-box {
     right: 50%;
 }
 
+/* Hides the register form box by default */
 .form-box.register {
     visibility: hidden;
 }
 
+/* Makes the register form box visible when the container has the 'active' class */
 .container.active .form-box.register {
     visibility: visible;
 }
 
+/* Sets the width of the form element to 100% */
 .form {
     width: 100%;
 }
 
+/* Styles for the main heading within the container */
 .container h1 {
     font-size: 36px;
     font-weight: 600;
-    color: #333;
 }
 
+/* Styles for the input box container, providing relative positioning for icons */
 .input-box {
     position: relative;
     margin: 30px 0;
 }
 
+/* Styles for the input fields within the input box */
 .input-box #input {
     width: 100%;
     padding: 13px 50px 13px 20px;
     background: #eee;
     border-radius: 8px;
     font-size: 16px;
-    color: #333;
     font-weight: 500;
     border: none;
     outline: none;
 }
 
+/* Styles for the placeholder text of input fields */
 .input-box #input::placeholder {
     color: #888;
     font-weight: 400;
 }
 
+/* Styles for the icon inside the input box, positioning it vertically centered on the right */
 .input-box .icon {
     position: absolute;
     right: 20px;
@@ -57,118 +74,121 @@
     color: #888;
 }
 
+/* Margin adjustment for the forgot password link */
 .forgot-link {
     margin: -15px 0px 15px;
 }
 
+/* Styles for the forgot password link, including font size, color, and text decoration */
 .forgot-link {
     font-size: 14.5px;
     color: #333;
     text-decoration: none;
 }
 
-.btn {
-    height: 48px;
-    background: #7494ec;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
-    border: none;
-    cursor: pointer;
-    color: #fff;
-    font-weight: 600;
-}
-
+/* Hover effect for buttons, changing background color */
 .btn:hover {
-    background: rgb(116, 148, 236, .6);
+    background: #7a58e9;
 }
 
+/* Styles for paragraph text within the container */
 .container p {
     font-size: 14.5px;
     margin: 15px 0;
 }
 
+/* Styles for the social icons container, using flexbox for centering */
 .social-icons {
     display: flex;
     justify-content: center;
 }
 
+/* Styles for individual social icon links */
 .social-icons .a {
     display: inline-flex;
     padding: 10px;
     line-height: 40px;
     font-size: 24px;
     border-radius: 8px;
-    /* color: #333; */
     text-decoration: none;
     margin: 0 8px;
 }
 
+/* Hover effect for social icon links, changing background, border-radius, and color */
 .social-icons .a:hover {
-    background: #7494ec;
+    background: #00B4D8;
     border-radius: 50%;
     color: #00ffff;
 }
 
+/* Styles for the toggle box, positioning it absolutely */
 .toggle-box {
     position: absolute;
     width: 100%;
     height: 100%;
 }
 
+/* Pseudo-element for the toggle box, creating a background shape with transition */
 .toggle-box::before {
     content: '';
     position: absolute;
     left: -250%;
     width: 300%;
     height: 100%;
-    background: #7494ec;
-    border-radius: 150px;
+    border-radius: 48px;
+    background: #00B4D8;
     z-index: 2;
     transition: 1.8s ease-in-out;
 }
 
+/* Moves the toggle box pseudo-element when the container has the 'active' class */
 .container.active .toggle-box::before {
     left: 50%;
 }
 
+/* Styles for the toggle panels, positioning them absolutely and centering content */
 .toggle-panel {
     position: absolute;
     width: 50%;
     height: 100%;
-    color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     z-index: 2;
     transition-delay: 0.6s ease-in-out;
 }
 
+/* Styles for the left toggle panel, positioning it to the left */
 .toggle-panel.toggle-left {
     left: 0;
     transition-delay: 1.2s;
 }
 
+/* Moves the left toggle panel when the container has the 'active' class */
 .container.active .toggle-panel.toggle-left {
     left: -50%;
     transition-delay: 0.6s;
 }
 
+/* Styles for the right toggle panel, positioning it to the right */
 .toggle-panel.toggle-right {
     right: -50%;
     transition-delay: 0.6s;
 }
 
+/* Moves the right toggle panel when the container has the 'active' class */
 .container.active .toggle-panel.toggle-right {
     right: 0;
     transition-delay: 1.2s;
 }
 
+/* Styles for paragraph text within toggle panels */
 .toggle-panel p {
     font-size: 18px;
     margin-bottom: 20px;
 }
 
+/* Styles for buttons within toggle panels, with transparent background and white border */
 .toggle-panel .btn {
     width: 160px;
     height: 46px;
@@ -177,23 +197,28 @@
     box-shadow: none;
 }
 
+/* Media queries for screens up to 650px wide */
 @media screen and (max-width: 650px) {
+
+    /* Adjusts container height for smaller screens */
     .container {
         height: calc(100vh - 40px);
     }
 
+    /* Adjusts form box position and size for smaller screens */
     .form-box {
-        background: purple;
         bottom: 0;
         width: 100%;
         height: 70%;
     }
 
+    /* Adjusts active form box position for smaller screens */
     .container.active .form-box {
         right: 0;
         bottom: 30%;
     }
 
+    /* Adjusts toggle box pseudo-element for smaller screens */
     .toggle-box::before {
         left: 0;
         top: -270%;
@@ -202,40 +227,50 @@
         border-radius: 20vw;
     }
 
+    /* Adjusts active toggle box pseudo-element for smaller screens */
     .container.active .toggle-box::before {
         left: 0;
         top: 70%;
     }
 
+    /* Adjusts toggle panel size for smaller screens */
     .toggle-panel {
         width: 100%;
         height: 30%;
     }
 
+    /* Adjusts left toggle panel position for smaller screens */
     .toggle-panel.toggle-left {
         top: 0;
     }
 
+    /* Adjusts active left toggle panel position for smaller screens */
     .container.active .toggle-panel.toggle-left {
         left: 0;
         top: -30%;
     }
 
+    /* Adjusts right toggle panel position for smaller screens */
     .toggle-panel.toggle-right {
         right: 0;
         bottom: -30%;
     }
 
+    /* Adjusts active right toggle panel position for smaller screens */
     .container.active .toggle-panel.toggle-right {
         bottom: 0;
     }
 }
 
+/* Media queries for screens up to 400px wide */
 @media screen and (max-width: 400px) {
+
+    /* Adjusts padding of form box for very small screens */
     .form-box {
         padding: 20px;
     }
 
+    /* Adjusts heading font size in toggle panels for very small screens */
     .toggle-panel h1 {
         font-size: 30px;
     }

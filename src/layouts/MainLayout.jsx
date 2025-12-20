@@ -1,13 +1,14 @@
-import { Outlet, useNavigate, } from "react-router-dom";
+import { Outlet, } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Mainlayout() {
+export default function MainLayout() {
     const navigate = useNavigate();
     useEffect(() => {
-        const hasLogged = localStorage.getItem('hasLogged') || sessionStorage.getItem('hasLogged');
-        if (hasLogged != 'true') {
+        const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+        if (!token) {
             navigate('/login');
         }
     }, [navigate]);
@@ -18,4 +19,4 @@ export default function Mainlayout() {
             <Footer />
         </div>
     )
-}
+};
