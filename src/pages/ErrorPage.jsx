@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import error_icon from '../assets/error_icon.svg';
 
 export default function ErrorPage() {
@@ -9,7 +10,10 @@ export default function ErrorPage() {
                 </h1>
                 <img src={error_icon} alt="error_icon" />
                 <p className='text-2xl text-gray-500'>please check link</p>
+                <Link className='bg-black text-white px-10 py-4 hover:bg-[#5F6FFF] transition-all duration-300 rounded-full' to="/">
+                    Go Back
+                </Link>
             </div>
         </div>
-    )
-}
+    );
+};

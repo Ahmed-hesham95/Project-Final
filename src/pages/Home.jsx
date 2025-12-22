@@ -4,7 +4,6 @@ import TopDoctors from '../components/TopDoctors.jsx';
 import Banner from '../components/Banner.jsx';
 
 function Home() {
-
   return (
     <div>
       <Header />
@@ -12,7 +11,7 @@ function Home() {
       <TopDoctors />
       <Banner />
     </div>
-  )
-}
+  );
+};
 
 export default Home

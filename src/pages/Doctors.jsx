@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../Context/AppContext";
-const Doctors = () => {
+
+export default function Doctors() {
   const { speciality } = useParams();
 
   const navigate = useNavigate();
@@ -111,5 +112,3 @@ const Doctors = () => {
     </div>
   );
 };
-
-export default Doctors;

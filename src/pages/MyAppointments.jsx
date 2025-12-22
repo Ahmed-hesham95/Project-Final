@@ -4,7 +4,7 @@ import { AppContext } from "../Context/AppContext";
 export default function MyAppointments() {
   const { doctors } = useContext(AppContext);
 
-  // Mocking appointments by taking the first 4 doctors
+  // محاكاة المواعيد عن طريق أخذ أول 4 أطباء
   const appointments = doctors.slice(0, 4);
 
   return (
@@ -28,8 +28,6 @@ export default function MyAppointments() {
                 <span className="text-sm text-neutral-700 font-medium">Date & Time: </span> 25, July, 2024 | 8:30 PM
               </p>
             </div>
-
-            <div></div> {/* Spacer or specific layout column */}
 
             <div className="flex flex-col gap-2 justify-end text-sm text-center">
               <button className="text-stone-500 sm:min-w-48 py-2 border rounded hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer">Pay Online</button>
