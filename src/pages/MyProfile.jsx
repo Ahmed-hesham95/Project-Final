@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { assets } from '../assets/assets';
+import { Field } from 'formik';
 
 export default function MyProfile() {
   const [isEdit, setIsEdit] = useState(false);
@@ -48,16 +49,16 @@ export default function MyProfile() {
 
           <p className='font-medium'>Phone:</p>
           {isEdit
-            ? <input className='bg-gray-100 max-w-52 outline-primary' type="text" value={userData.phone} onChange={e => setUserData(data => ({ ...data, phone: e.target.value }))} />
+            ? <Field className='bg-gray-100 max-w-52 outline-primary' type="text" value={userData.phone} onChange={e => setUserData(data => ({ ...data, phone: e.target.value }))} />
             : <p className='text-blue-400'>{userData.phone}</p>
           }
 
           <p className='font-medium'>Address:</p>
           {isEdit
             ? <p>
-              <input className='bg-gray-50 outline-primary' onChange={(event) => setUserData(data => ({ ...data, address: { ...data.address, line1: event.target.value } }))} value={userData.address.line1} type="text" />
+              <Field className='bg-gray-50 outline-primary' onChange={(event) => setUserData(data => ({ ...data, address: { ...data.address, line1: event.target.value } }))} value={userData.address.line1} type="text" />
               <br />
-              <input className='bg-gray-50 outline-primary' onChange={(event) => setUserData(data => ({ ...data, address: { ...data.address, line2: event.target.value } }))} value={userData.address.line2} type="text" />
+              <Field className='bg-gray-50 outline-primary' onChange={(event) => setUserData(data => ({ ...data, address: { ...data.address, line2: event.target.value } }))} value={userData.address.line2} type="text" />
             </p>
             : <p className='text-gray-500'>
               {userData.address.line1}
@@ -74,7 +75,8 @@ export default function MyProfile() {
         <div className='grid grid-cols-[1fr_3fr] gap-y-2.5 mt-3 text-neutral-700'>
           <p className='font-medium'>Gender:</p>
           {isEdit
-            ? <select className='max-w-20 bg-gray-100 outline-primary' onChange={(event) => setUserData(data => ({ ...data, gender: event.target.value }))} value={userData.gender}>
+            ?
+            <select className='max-w-20 bg-gray-100 outline-primary' onChange={(event) => setUserData(data => ({ ...data, gender: event.target.value }))} value={userData.gender}>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>

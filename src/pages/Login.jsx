@@ -13,6 +13,7 @@ export default function Login() {
   const [isActive, setIsActive] = useState(false);
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
+  // Protected Routes
   useEffect(() => {
     const token = localStorage.getItem('token') || sessionStorage.getItem('token');
     if (token) {
@@ -42,7 +43,7 @@ export default function Login() {
       })
       .catch((err) => {
         console.log(err);
-        toast.error(err.response.data.error.message);
+        toast.error(err.response.data.error.message) || toast.error(err.message);
       });
   };
 
@@ -74,11 +75,11 @@ export default function Login() {
   };
 
   return (
-    <div className='h-dvh flex justify-center items-center body'>
+    <div className='h-dvh flex justify-center items-center body login-container overflow-hidden font-[Poppins]'>
       <div className='w-full flex justify-center'>
         <div
           id='container'
-          className={`container ${isActive ? 'active' : null} relative w-[950px] h-[750px] m-5 bg-white rounded-4xl shadow-[0_0_30px_rgba(0,0,0,0.2)] overflow-hidden transition-all duration-700`}
+          className={`container ${isActive ? 'active' : ''} relative w-[950px] h-[750px] m-5 rounded-[30px] overflow-hidden transition-all duration-700 bg-white/10 backdrop-blur-[20px] border border-white/20 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]`}
         >
 
           {/* ======================== Login Form ======================== */}
@@ -87,51 +88,50 @@ export default function Login() {
             onSubmit={handleLoginSubmit}
             validationSchema={loginSchema}
           >
-            <div className='form'>
-              <Form className='form-box absolute right-0 w-1/2 h-full flex flex-col justify-center p-10 text-center transition-all duration-700 z-1'>
-                <h1 className='text-4xl font-semibold text-gray-800 mb-5'>Login</h1>
+            <div className='form w-full'>
+              <Form className='form-box absolute right-0 w-1/2 h-full flex flex-col justify-center p-10 text-center transition-all duration-700 z-10'>
+                <h1 className='text-4xl font-bold text-white mb-6 tracking-wide drop-shadow-sm'>Login</h1>
                 <div className='h-[18%]'>
-                  <div className='py-1.5 flex relative bg-gray-200 justify-between items-center outline-none rounded-lg'>
+                  <div className='relative my-[10px]'>
                     <Field
                       name='identifier'
                       type='email'
-                      placeholder='Enter your identifier'
-                      id='input'
-                      className='p-3 pr-12 text-gray-800 outline-none'
+                      placeholder='Identifier'
+                      className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300'
                     />
-                    <FaEnvelope className='-translate-y-1/2 text-gray-500 absolute right-4 top-1/2' />
+                    <FaEnvelope className='absolute right-5 top-1/2 -translate-y-1/2 text-xl text-white/80' />
                   </div>
-                  <ErrorMessage name='identifier' component={'div'} className='text-red-500 text-md' />
+                  <ErrorMessage name='identifier' component={'div'} className='text-red-300 text-sm mt-1 text-left pl-1' />
                 </div>
 
                 <div className='h-[18%]'>
-                  <div className='py-1.5 flex relative bg-[#eff2f9] rounded-lg justify-between border-0 border-[4px dotted #161b1d] items-center shadow-[-2px_-2px_10px_inset_#fafbff,2px_2px_10px_inset_#161b1d05]'>
+                  <div className='relative my-[10px]'>
                     <Field
                       type={`${isShown ? 'text' : 'password'}`}
                       name='password'
-                      placeholder='Enter your password'
-                      className='p-3 pr-12 text-gray-800 outline-none'
+                      placeholder='Password'
+                      className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300'
                     />
                     {
                       isShown
                         ?
-                        <FaEye className='-translate-y-1/2 text-gray-500 absolute right-4 top-1/2 cursor-pointer' onClick={() => setIsShown(false)} />
+                        <FaEye className='absolute right-5 top-1/2 -translate-y-1/2 text-xl text-white/80 cursor-pointer hover:text-white transition-colors' onClick={() => setIsShown(false)} />
                         :
-                        <LuEyeClosed className='-translate-y-1/2 text-gray-500 absolute right-4 top-1/2 cursor-pointer' onClick={() => setIsShown(true)} />
+                        <LuEyeClosed className='absolute right-5 top-1/2 -translate-y-1/2 text-xl text-white/80 cursor-pointer hover:text-white transition-colors' onClick={() => setIsShown(true)} />
                     }
                   </div>
-                  <ErrorMessage name='password' component={'div'} className='text-red-500 text-md' />
+                  <ErrorMessage name='password' component={'div'} className='text-red-300 text-sm mt-1 text-left pl-1' />
                 </div>
 
-                <div className='mb-4 text-right h-[18%] flex justify-between'>
+                <div className='mb-6 text-right h-auto flex justify-between items-center'>
                   <div className='flex items-center gap-2' onClick={(e) => e.stopPropagation()}>
-                    <Field id='remember' name='remember' className='checkbox checkbox-neutral' type='checkbox' />
-                    <label className='text-gray-700 cursor-pointer' htmlFor='remember'>Remember me</label>
+                    <Field id='remember' name='remember' className='checkbox checkbox-info border-white/50' type='checkbox' />
+                    <label className='text-gray-200 cursor-pointer text-sm select-none' htmlFor='remember'>Remember me</label>
                   </div>
-                  <Link to={'/'} className='a text-gray-700 text-sm'>Forgot Password?</Link>
+                  <Link to={'/'} className='text-[14.5px] text-white/80 no-underline hover:text-white hover:underline transition-colors duration-300'>Forgot Password?</Link>
                 </div>
 
-                <button type='submit' className='btn w-1/2 mx-auto bg-[#00B4D8] text-[#eef9fd] py-3 rounded-lg font-semibold shadow hover:scale-105 transition'>
+                <button type='submit' className='cursor-pointer w-full mx-auto bg-linear-to-r from-cyan-400 to-blue-600 text-white py-3 rounded-lg font-bold uppercase tracking-wider shadow-[0_4px_6px_rgba(0,0,0,0.2)] hover:from-cyan-500 hover:to-blue-700 hover:shadow-[0_10px_15px_rgba(0,0,0,0.3)] hover:-translate-y-[2px] transition-all duration-200'>
                   Login
                 </button>
               </Form>
@@ -144,40 +144,40 @@ export default function Login() {
             onSubmit={handleRegisterSubmit}
             validationSchema={registerSchema}
           >
-            <div className='form h-auto'>
-              <Form className='form-box register absolute right-0 w-1/2 h-full flex flex-col justify-center p-10 text-center bg-white z-1 transition-all duration-700'>
-                <h1 className='text-4xl font-semibold text-gray-800 mb-5'>Sign Up</h1>
+            <div className='form w-full h-auto'>
+              <Form className='form-box register absolute right-0 w-1/2 h-full flex flex-col justify-center p-10 text-center z-10 transition-all duration-700'>
+                <h1 className='text-4xl font-bold text-white mb-6 tracking-wide drop-shadow-sm'>Sign Up</h1>
                 <div className='h-[18%]'>
-                  <div className='relative'>
-                    <Field name='username' type='text' placeholder='Enter your name' className='w-full p-3 pr-12 bg-gray-200 rounded-lg' />
-                    <FaUser className='icon fa-solid fa-user absolute right-4 top-1/2 -translate-y-1/2 text-gray-500' />
+                  <div className='relative my-[10px]'>
+                    <Field name='username' type='text' placeholder='Username' className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300' />
+                    <FaUser className='absolute right-5 top-1/2 -translate-y-1/2 text-xl text-white/80' />
                   </div>
-                  <ErrorMessage name='username' component={'div'} className='text-red-500 h-fit' />
+                  <ErrorMessage name='username' component={'div'} className='text-red-300 text-sm mt-1 text-left pl-1' />
                 </div>
 
                 <div className='h-[18%]'>
-                  <div className='relative'>
-                    <Field name='email' type='email' placeholder='Enter your email' className='w-full p-3 pr-12 bg-gray-200 rounded-lg' />
-                    <FaEnvelope className='icon fa-solid fa-envelope absolute right-4 top-1/2 -translate-y-1/2 text-gray-500' />
+                  <div className='relative my-[10px]'>
+                    <Field name='email' type='email' placeholder='Email' className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300' />
+                    <FaEnvelope className='absolute right-5 top-1/2 -translate-y-1/2 text-xl text-white/80' />
                   </div>
-                  <ErrorMessage name='email' component={'div'} className='text-red-500 h-fit' />
+                  <ErrorMessage name='email' component={'div'} className='text-red-300 text-sm mt-1 text-left pl-1' />
                 </div>
 
                 <div className='h-[18%]'>
-                  <div className='relative'>
-                    <Field name='password' type={`${isShown ? 'text' : 'password'}`} placeholder='Enter your password' className='w-full p-3 pr-12 bg-gray-200 rounded-lg' />
+                  <div className='relative my-[10px]'>
+                    <Field name='password' type={`${isShown ? 'text' : 'password'}`} placeholder='Password' className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300' />
                     {
                       isShown
                         ?
-                        <FaEye className='icon fa-solid fa-eye absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 cursor-pointer' onClick={() => setIsShown(false)} />
+                        <FaEye className='absolute right-5 top-1/2 -translate-y-1/2 text-xl text-white/80 cursor-pointer hover:text-white transition-colors' onClick={() => setIsShown(false)} />
                         :
-                        <LuEyeClosed className='icon fa-solid fa-lock absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 cursor-pointer' onClick={() => setIsShown(true)} />
+                        <LuEyeClosed className='absolute right-5 top-1/2 -translate-y-1/2 text-xl text-white/80 cursor-pointer hover:text-white transition-colors' onClick={() => setIsShown(true)} />
                     }
                   </div>
-                  <ErrorMessage name='password' component={'div'} className='text-red-500 h-fit' />
+                  <ErrorMessage name='password' component={'div'} className='text-red-300 text-sm mt-1 text-left pl-1' />
                 </div>
 
-                <button type='submit' className='btn w-1/2 mx-auto bg-[#00B4D8] text-white py-3 rounded-lg font-semibold shadow transition'>
+                <button type='submit' className='cursor-pointer w-full mx-auto bg-linear-to-r from-cyan-400 to-blue-600 text-white py-3 rounded-lg font-bold uppercase tracking-wider shadow-[0_4px_6px_rgba(0,0,0,0.2)] hover:from-cyan-500 hover:to-blue-700 hover:shadow-[0_10px_15px_rgba(0,0,0,0.3)] hover:-translate-y-[2px] transition-all duration-200'>
                   Sign Up
                 </button>
               </Form>
@@ -187,22 +187,22 @@ export default function Login() {
           {/* ======================== Toggle boxes ======================== */}
 
           <div className='toggle-box absolute w-full h-full'>
-            <div className='toggle-panel toggle-left px-8'>
-              <h1 className='text-4xl font-bold text-[#eef9fd] text-left'>Welcome to our website!</h1>
-              <p className='text-lg mt-2 text-[#eef9fd] text-left'>Don't have an account?</p>
+            <div className='toggle-panel toggle-left px-12'>
+              <h1 className='text-4xl font-extrabold text-[#eef9fd] text-left drop-shadow-md'>Welcome Back!</h1>
+              <p className='text-lg mt-4 text-[#eef9fd]/90 text-left leading-relaxed'>To keep connected with us please login with your personal info</p>
               <button
-                className={`btn border-2 border-[#eef9fd] bg-transparent w-40 h-[46px] mt-3 text-[#eef9fd] font-semibold rounded-lg mx-auto`}
+                className={`cursor-pointer border-2 border-white hover:bg-white hover:text-blue-900 w-48 h-[50px] mt-6 text-white font-bold rounded-full mx-auto transition-all duration-300 shadow-md`}
                 onClick={() => setIsActive(true)}
               >
                 Sign Up
               </button>
             </div>
 
-            <div className='toggle-panel toggle-right px-8'>
-              <h1 className='text-4xl font-bold text-[#eef9fd] text-center'>Welcome Back!</h1>
-              <p className='text-lg mt-2 text-[#eef9fd] text-center'>Already have an account?</p>
+            <div className='toggle-panel toggle-right px-12'>
+              <h1 className='text-4xl font-extrabold text-[#eef9fd] text-center drop-shadow-md'>Hello, Friend!</h1>
+              <p className='text-lg mt-4 text-[#eef9fd]/90 text-center leading-relaxed'>Enter your personal details and start your journey with us</p>
               <button
-                className={`btn border-2 border-[#eef9fd] bg-transparent w-40 h-[46px] mt-3 text-[#eef9fd] font-semibold rounded-lg mx-auto`}
+                className={`cursor-pointer border-2 border-white hover:bg-white hover:text-blue-900 w-48 h-[50px] mt-6 text-white font-bold rounded-full mx-auto transition-all duration-300 shadow-md`}
                 onClick={() => setIsActive(false)}
               >
                 Log In

@@ -11,9 +11,9 @@ import Appointment from './pages/Appointment';
 import { Toaster } from 'react-hot-toast';
 import ErrorPage from './pages/ErrorPage';
 
-function App() {
+export default function App() {
   return (
-    <div className='px-0 sm:px-0 md:px-[-10%] lg:px-[10%]'>
+    <div className='px-0 sm:px-0 md:px-[-10%]'>
       <Toaster position='top-right' toastOptions={{
         className: 'border-2',
         success: {
@@ -53,5 +53,3 @@ function App() {
     </div>
   );
 };
-
-export default App
