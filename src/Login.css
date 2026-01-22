@@ -32,6 +32,7 @@
     right: 50%;
 }
 
+/* Hide the login form when the register form is active */
 .container.active .form-box:not(.register) {
     visibility: hidden;
     opacity: 0;

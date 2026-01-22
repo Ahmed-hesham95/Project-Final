@@ -192,7 +192,7 @@ export default function Login() {
               <p className='text-lg mt-4 text-[#eef9fd]/90 text-left leading-relaxed'>To keep connected with us please login with your personal info</p>
               <button
                 className={`cursor-pointer border-2 border-white hover:bg-white hover:text-blue-900 w-48 h-[50px] mt-6 text-white font-bold rounded-full mx-auto transition-all duration-300 shadow-md`}
-                onClick={() => setIsActive(true)}
+                onClick={() => setIsActive(!isActive)}
               >
                 Sign Up
               </button>
@@ -203,7 +203,7 @@ export default function Login() {
               <p className='text-lg mt-4 text-[#eef9fd]/90 text-center leading-relaxed'>Enter your personal details and start your journey with us</p>
               <button
                 className={`cursor-pointer border-2 border-white hover:bg-white hover:text-blue-900 w-48 h-[50px] mt-6 text-white font-bold rounded-full mx-auto transition-all duration-300 shadow-md`}
-                onClick={() => setIsActive(false)}
+                onClick={() => setIsActive(!isActive)}
               >
                 Log In
               </button>
