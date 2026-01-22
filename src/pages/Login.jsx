@@ -28,9 +28,9 @@ export default function Login() {
   });
 
   const handleLoginSubmit = (values) => {
-    let domain = 'http://82.112.241.233:2001';
+    // let domain = 'http://82.112.241.233:2001';
     let endPoint = '/api/auth/local';
-    let url = domain + endPoint;
+    let url = endPoint;
     axios
       .post(url, values)
       .then((res) => {
