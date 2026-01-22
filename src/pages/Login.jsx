@@ -75,11 +75,10 @@ export default function Login() {
   };
 
   return (
-    <div className='h-dvh flex justify-center items-center body login-container overflow-hidden font-[Poppins]'>
+    <div className='h-dvh flex justify-center items-center body login-container overflow-hidden'>
       <div className='w-full flex justify-center'>
         <div
-          id='container'
-          className={`container ${isActive ? 'active' : ''} relative w-[950px] h-[750px] m-5 rounded-[30px] overflow-hidden transition-all duration-700 bg-white/10 backdrop-blur-[20px] border border-white/20 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]`}
+          className={`container ${isActive ? 'active' : ''} relative w-[950px] h-[750px] m-5 rounded-[30px] overflow-hidden transition-all duration-700 bg-white/10 backdrop-blur-[20px] border border-white/20 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] animate-[fadeInUp_0.8s_ease-out]`}
         >
 
           {/* ======================== Login Form ======================== */}
@@ -97,7 +96,7 @@ export default function Login() {
                       name='identifier'
                       type='email'
                       placeholder='Identifier'
-                      className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300'
+                      className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300 animate-[fadeInUp_0.6s_ease-out_0.2s_both]'
                     />
                     <FaEnvelope className='absolute right-5 top-1/2 -translate-y-1/2 text-xl text-white/80' />
                   </div>
@@ -110,7 +109,7 @@ export default function Login() {
                       type={`${isShown ? 'text' : 'password'}`}
                       name='password'
                       placeholder='Password'
-                      className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300'
+                      className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300 animate-[fadeInUp_0.6s_ease-out_0.4s_both]'
                     />
                     {
                       isShown
@@ -131,7 +130,7 @@ export default function Login() {
                   <Link to={'/'} className='text-[14.5px] text-white/80 no-underline hover:text-white hover:underline transition-colors duration-300'>Forgot Password?</Link>
                 </div>
 
-                <button type='submit' className='cursor-pointer w-full mx-auto bg-linear-to-r from-cyan-400 to-blue-600 text-white py-3 rounded-lg font-bold uppercase tracking-wider shadow-[0_4px_6px_rgba(0,0,0,0.2)] hover:from-cyan-500 hover:to-blue-700 hover:shadow-[0_10px_15px_rgba(0,0,0,0.3)] hover:-translate-y-[2px] transition-all duration-200'>
+                <button type='submit' className='cursor-pointer w-full mx-auto bg-primary text-white py-3 rounded-lg font-bold uppercase tracking-wider shadow-[0_4px_6px_rgba(0,0,0,0.2)] hover:bg-primary/90 hover:shadow-[0_10px_15px_rgba(0,0,0,0.3)] hover:-translate-y-[2px] transition-all duration-200 animate-[fadeInUp_0.6s_ease-out]'>
                   Login
                 </button>
               </Form>
@@ -149,7 +148,7 @@ export default function Login() {
                 <h1 className='text-4xl font-bold text-white mb-6 tracking-wide drop-shadow-sm'>Sign Up</h1>
                 <div className='h-[18%]'>
                   <div className='relative my-[10px]'>
-                    <Field name='username' type='text' placeholder='Username' className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300' />
+                    <Field name='username' type='text' placeholder='Username' className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300 animate-[fadeInUp_0.6s_ease-out_0.2s_both]' />
                     <FaUser className='absolute right-5 top-1/2 -translate-y-1/2 text-xl text-white/80' />
                   </div>
                   <ErrorMessage name='username' component={'div'} className='text-red-300 text-sm mt-1 text-left pl-1' />
@@ -157,7 +156,7 @@ export default function Login() {
 
                 <div className='h-[18%]'>
                   <div className='relative my-[10px]'>
-                    <Field name='email' type='email' placeholder='Email' className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300' />
+                    <Field name='email' type='email' placeholder='Email' className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300 animate-[fadeInUp_0.6s_ease-out_0.4s_both]' />
                     <FaEnvelope className='absolute right-5 top-1/2 -translate-y-1/2 text-xl text-white/80' />
                   </div>
                   <ErrorMessage name='email' component={'div'} className='text-red-300 text-sm mt-1 text-left pl-1' />
@@ -165,7 +164,7 @@ export default function Login() {
 
                 <div className='h-[18%]'>
                   <div className='relative my-[10px]'>
-                    <Field name='password' type={`${isShown ? 'text' : 'password'}`} placeholder='Password' className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300' />
+                    <Field name='password' type={`${isShown ? 'text' : 'password'}`} placeholder='Password' className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300 animate-[fadeInUp_0.6s_ease-out_0.6s_both]' />
                     {
                       isShown
                         ?
@@ -177,7 +176,7 @@ export default function Login() {
                   <ErrorMessage name='password' component={'div'} className='text-red-300 text-sm mt-1 text-left pl-1' />
                 </div>
 
-                <button type='submit' className='cursor-pointer w-full mx-auto bg-linear-to-r from-cyan-400 to-blue-600 text-white py-3 rounded-lg font-bold uppercase tracking-wider shadow-[0_4px_6px_rgba(0,0,0,0.2)] hover:from-cyan-500 hover:to-blue-700 hover:shadow-[0_10px_15px_rgba(0,0,0,0.3)] hover:-translate-y-[2px] transition-all duration-200'>
+                <button type='submit' className='cursor-pointer w-full mx-auto bg-primary text-white py-3 rounded-lg font-bold uppercase tracking-wider shadow-[0_4px_6px_rgba(0,0,0,0.2)] hover:bg-primary/90 hover:shadow-[0_10px_15px_rgba(0,0,0,0.3)] hover:-translate-y-[2px] transition-all duration-200 animate-[fadeInUp_0.6s_ease-out_0.8s_both]'>
                   Sign Up
                 </button>
               </Form>
@@ -191,7 +190,7 @@ export default function Login() {
               <h1 className='text-4xl font-extrabold text-[#eef9fd] text-left drop-shadow-md'>Welcome Back!</h1>
               <p className='text-lg mt-4 text-[#eef9fd]/90 text-left leading-relaxed'>To keep connected with us please login with your personal info</p>
               <button
-                className={`cursor-pointer border-2 border-white hover:bg-white hover:text-blue-900 w-48 h-[50px] mt-6 text-white font-bold rounded-full mx-auto transition-all duration-300 shadow-md`}
+                className={`cursor-pointer border-2 border-white hover:bg-white hover:text-primary w-48 h-[50px] mt-6 text-white font-bold rounded-full mx-auto transition-all duration-300 shadow-md`}
                 onClick={() => setIsActive(!isActive)}
               >
                 Sign Up
@@ -202,7 +201,7 @@ export default function Login() {
               <h1 className='text-4xl font-extrabold text-[#eef9fd] text-center drop-shadow-md'>Hello, Friend!</h1>
               <p className='text-lg mt-4 text-[#eef9fd]/90 text-center leading-relaxed'>Enter your personal details and start your journey with us</p>
               <button
-                className={`cursor-pointer border-2 border-white hover:bg-white hover:text-blue-900 w-48 h-[50px] mt-6 text-white font-bold rounded-full mx-auto transition-all duration-300 shadow-md`}
+                className={`cursor-pointer border-2 border-white hover:bg-white hover:text-primary w-48 h-[50px] mt-6 text-white font-bold rounded-full mx-auto transition-all duration-300 shadow-md`}
                 onClick={() => setIsActive(!isActive)}
               >
                 Log In
