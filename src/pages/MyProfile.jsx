@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { assets } from '../assets/assets';
-import { Field } from 'formik';
+
 
 export default function MyProfile() {
   const [isEdit, setIsEdit] = useState(false);
@@ -49,16 +49,16 @@ export default function MyProfile() {
 
           <p className='font-medium'>Phone:</p>
           {isEdit
-            ? <Field className='bg-gray-100 max-w-52 outline-primary' type="text" value={userData.phone} onChange={e => setUserData(data => ({ ...data, phone: e.target.value }))} />
+            ? <input className='bg-gray-100 max-w-52 outline-primary' type="text" value={userData.phone} onChange={e => setUserData(data => ({ ...data, phone: e.target.value }))} />
             : <p className='text-blue-400'>{userData.phone}</p>
           }
 
           <p className='font-medium'>Address:</p>
           {isEdit
             ? <p>
-              <Field className='bg-gray-50 outline-primary' onChange={(event) => setUserData(data => ({ ...data, address: { ...data.address, line1: event.target.value } }))} value={userData.address.line1} type="text" />
+              <input className='bg-gray-50 outline-primary' onChange={(event) => setUserData(data => ({ ...data, address: { ...data.address, line1: event.target.value } }))} value={userData.address.line1} type="text" />
               <br />
-              <Field className='bg-gray-50 outline-primary' onChange={(event) => setUserData(data => ({ ...data, address: { ...data.address, line2: event.target.value } }))} value={userData.address.line2} type="text" />
+              <input className='bg-gray-50 outline-primary' onChange={(event) => setUserData(data => ({ ...data, address: { ...data.address, line2: event.target.value } }))} value={userData.address.line2} type="text" />
             </p>
             : <p className='text-gray-500'>
               {userData.address.line1}

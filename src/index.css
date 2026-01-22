@@ -25,3 +25,23 @@
       transform: translateY(0);
    }
 }
+
+@keyframes gradientBG {
+   0% {
+      background-position: 0% 50%;
+   }
+
+   50% {
+      background-position: 100% 50%;
+   }
+
+   100% {
+      background-position: 0% 50%;
+   }
+}
+
+body {
+   background: linear-gradient(-45deg, #ffffff, #f0f9ff, #e0f2fe, #f0fdf4);
+   background-size: 400% 400%;
+   animation: gradientBG 10s ease-in-out infinite;
+}
