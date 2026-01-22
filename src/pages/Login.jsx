@@ -124,7 +124,7 @@ export default function Login() {
 
                 <div className='mb-6 text-right h-auto flex justify-between items-center'>
                   <div className='flex items-center gap-2' onClick={(e) => e.stopPropagation()}>
-                    <Field id='remember' name='remember' className='checkbox checkbox-info border-white/50' type='checkbox' />
+                    <Field id='remember' name='remember' onClick={(e) => e.stopPropagation()} className='checkbox checkbox-info border-white/50' type='checkbox' />
                     <label className='text-gray-200 cursor-pointer text-sm select-none' htmlFor='remember'>Remember me</label>
                   </div>
                   <Link to={'/'} className='text-[14.5px] text-white/80 no-underline hover:text-white hover:underline transition-colors duration-300'>Forgot Password?</Link>
