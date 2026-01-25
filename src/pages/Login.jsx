@@ -6,8 +6,8 @@ import '../Login.css';
 import { FaEnvelope, FaEye, FaUser } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import axios from 'axios';
 import { LuEyeClosed } from 'react-icons/lu';
+import api from '../api/Axios';
 
 export default function Login() {
   const [isActive, setIsActive] = useState(false);
@@ -28,10 +28,9 @@ export default function Login() {
   });
 
   const handleLoginSubmit = (values) => {
-    // let domain = 'http://82.112.241.233:2001';
-    let endPoint = '/api/auth/local';
-    let url = endPoint;
-    axios
+    // let domain = 'https://store.skyready.online';
+    let url = '/auth/local';
+    api
       .post(url, values)
       .then((res) => {
         console.log(res);
@@ -55,10 +54,9 @@ export default function Login() {
   });
 
   const handleRegisterSubmit = (values) => {
-    let domain = 'http://82.112.241.233:2001';
-    let endPoint = '/api/auth/local/register';
-    let url = domain + endPoint;
-    axios
+    // let domain = 'https://store.skyready.online';
+    let url = '/auth/local/register';
+    api
       .post(url, values)
       .then((res) => {
         let token = res.data.jwt;
