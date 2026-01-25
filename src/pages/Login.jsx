@@ -28,8 +28,8 @@ export default function Login() {
   });
 
   const handleLoginSubmit = (values) => {
-    let domain = 'http://82.112.241.233:2001/api';
-    let url = domain + '/auth/local';
+    // let domain = 'http://82.112.241.233:2001/api';
+    let url = '/auth/local';
     api
       .post(url, values)
       .then((res) => {
@@ -54,8 +54,8 @@ export default function Login() {
   });
 
   const handleRegisterSubmit = (values) => {
-    let domain = 'http://82.112.241.233:2001/api';
-    let url = domain + '/auth/local/register';
+    // let domain = 'http://82.112.241.233:2001/api';
+    let url = '/auth/local/register';
     api
       .post(url, values)
       .then((res) => {
