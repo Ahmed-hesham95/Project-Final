@@ -63,7 +63,7 @@ export default function Login() {
         sessionStorage.setItem('token', token);
         toast.success('Register Success');
         setIsActive(false);
-        navigate('/login');
+        navigate('/');
         console.log('Register Values:', values);
       })
       .catch((err) => {

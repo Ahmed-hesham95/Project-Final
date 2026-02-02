@@ -10,11 +10,11 @@ export default function MyProfile() {
     email: "richardjameswap@gmail.com",
     phone: "+1 123 456 7890",
     address: {
-      line1: "57th Cross, Richmond",
-      line2: "Circle, Church Road, London"
+      line1: "شارع العوطلية 11",
+      line2: "الإسكندرية"
     },
     gender: "Male",
-    dob: "2000-01-20"
+    dob: "2013-01-25"
   });
 
   return (

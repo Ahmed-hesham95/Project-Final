@@ -17,7 +17,7 @@ export default function App() {
       <Toaster position='top-right' toastOptions={{
         className: 'border-2',
         success: {
-          duration: 5000,
+          duration: 1000,
           style: {
             borderRadius: '10px',
             padding: '1rem',
@@ -26,7 +26,7 @@ export default function App() {
           },
         },
         error: {
-          duration: 5000,
+          duration: 1000,
           style: {
             borderRadius: '10px',
             padding: '1rem',

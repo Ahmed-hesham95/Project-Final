@@ -36,7 +36,6 @@
 .container.active .form-box:not(.register) {
     visibility: hidden;
     opacity: 0;
-    transition-delay: 0s;
 }
 
 /* Ensure register form is hidden by default with opacity for smoothness */
@@ -45,6 +44,7 @@
     opacity: 0;
 }
 
+/* Show the register form when the container is active */
 .container.active .form-box.register {
     visibility: visible;
     opacity: 1;
