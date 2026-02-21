@@ -40,11 +40,11 @@ export default function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route index path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/doctors' element={<Doctors />} />
+          <Route path='/doctors/:speciality' element={<Doctors />} />
           <Route element={<ProtectedRoute />}>
-            <Route path='/doctors' element={<Doctors />} />
-            <Route path='/doctors/:speciality' element={<Doctors />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/contact' element={<Contact />} />
             <Route path='/my-profile' element={<MyProfile />} />
             <Route path='/my-appointments' element={<MyAppointments />} />
             <Route path="/appointment/:docId" element={<Appointment />} />
