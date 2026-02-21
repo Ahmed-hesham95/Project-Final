@@ -3,7 +3,6 @@ import { AppContext } from '../Context/AppContext'
 import { useNavigate } from 'react-router-dom'
 
 const RelatedDoctors = ({ speciality, docId }) => {
-  /* eslint-disable react-hooks/exhaustive-deps */
   const { doctors } = useContext(AppContext)
   const navigate = useNavigate()
 
