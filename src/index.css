@@ -44,4 +44,10 @@ body {
    background: linear-gradient(-45deg, #ffffff, #f0f9ff, #e0f2fe, #f0fdf4);
    background-size: 400% 400%;
    animation: gradientBG 10s ease-in-out infinite;
+   @apply text-black transition-colors duration-200;
+}
+
+[data-theme='dark'] body {
+   background: linear-gradient(-45deg, #111827, #1f2937, #374151, #111827);
+   @apply text-[#E5E7EB];
 }
