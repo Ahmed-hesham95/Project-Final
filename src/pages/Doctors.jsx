@@ -22,7 +22,7 @@ export default function Doctors() {
                 : navigate("/doctors/General physician")
             }
             className={`w-[94vw] hover:bg-indigo-100 sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "General physician"
-              ? "bg-indigo-200 text-black"
+              ? "bg-indigo-200 text-[#1F2937]"
               : ""
               }`}
           >
@@ -34,7 +34,7 @@ export default function Doctors() {
                 ? navigate("/doctors")
                 : navigate("/doctors/Gynecologist")
             }
-            className={`w-[94vw] hover:bg-indigo-100 sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "Gynecologist" ? "bg-indigo-200 text-black" : ""
+            className={`w-[94vw] hover:bg-indigo-100 sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "Gynecologist" ? "bg-indigo-200 text-[#1F2937]" : ""
               }`}
           >
             Gynecologist
@@ -45,7 +45,7 @@ export default function Doctors() {
                 ? navigate("/doctors")
                 : navigate("/doctors/Dermatologist")
             }
-            className={`w-[94vw] hover:bg-indigo-100 sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "Dermatologist" ? "bg-indigo-200 text-black" : ""
+            className={`w-[94vw] hover:bg-indigo-100 sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "Dermatologist" ? "bg-indigo-200 text-[#1F2937]" : ""
               }`}
           >
             Dermatologist
@@ -56,7 +56,7 @@ export default function Doctors() {
                 ? navigate("/doctors")
                 : navigate("/doctors/Pediatricians")
             }
-            className={`w-[94vw] hover:bg-indigo-100 sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "Pediatricians" ? "bg-indigo-200 text-black" : ""
+            className={`w-[94vw] hover:bg-indigo-100 sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "Pediatricians" ? "bg-indigo-200 text-[#1F2937]" : ""
               }`}
           >
             Pediatricians
@@ -67,7 +67,7 @@ export default function Doctors() {
                 ? navigate("/doctors")
                 : navigate("/doctors/Neurologist")
             }
-            className={`w-[94vw] hover:bg-indigo-100 sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "Neurologist" ? "bg-indigo-200 text-black" : ""
+            className={`w-[94vw] hover:bg-indigo-100 sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "Neurologist" ? "bg-indigo-200 text-[#1F2937]" : ""
               }`}
           >
             Neurologist
@@ -79,7 +79,7 @@ export default function Doctors() {
                 : navigate("/doctors/Gastroenterologist")
             }
             className={`w-[94vw] hover:bg-indigo-100 sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality === "Gastroenterologist"
-              ? "bg-indigo-200 text-black"
+              ? "bg-indigo-200 text-[#1F2937]"
               : ""
               }`}
           >

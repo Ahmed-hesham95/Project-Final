@@ -39,7 +39,7 @@ const Navbar = () => {
   }
   return (
     <>
-      <div className="relative flex items-center justify-between text-sm text-black py-4 mb-5 border-b border-b-gray-400">
+      <div className="relative flex items-center justify-between text-sm text-[#1F2937] py-4 mb-5 border-b border-b-gray-400">
         <img onClick={() => navigate('/')} className="w-44 cursor-pointer" src={assets.logo} alt="Logo" />
         <ul className="hidden md:flex items-start gap-6 font-medium">
           <NavLink to="/">
@@ -72,9 +72,9 @@ const Navbar = () => {
                   {showDropdown && (
                     <div className="absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20">
                       <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
-                        <p onClick={() => { navigate('my-profile'); setShowDropdown(false); }} className="hover:text-black cursor-pointer">My Profile</p>
-                        <p onClick={() => { navigate('my-appointments'); setShowDropdown(false); }} className="hover:text-black cursor-pointer">My Appointments</p>
-                        <p onClick={() => { handleLogout(); setShowDropdown(false); }} className="hover:text-black cursor-pointer">Logout</p>
+                        <p onClick={() => { navigate('my-profile'); setShowDropdown(false); }} className="hover:text-[#1F2937] cursor-pointer">My Profile</p>
+                        <p onClick={() => { navigate('my-appointments'); setShowDropdown(false); }} className="hover:text-[#1F2937] cursor-pointer">My Appointments</p>
+                        <p onClick={() => { handleLogout(); setShowDropdown(false); }} className="hover:text-[#1F2937] cursor-pointer">Logout</p>
                       </div>
                     </div>
                   )}
