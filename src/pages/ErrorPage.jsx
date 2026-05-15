@@ -8,7 +8,7 @@ export default function ErrorPage() {
                 <h1 className='text-5xl font-semibold text-[#5F6FFF] h-fit w-fit rounded-b-4xl px-4 py-2'>
                     Page Not Found
                 </h1>
-                <img src={error_icon} alt="error_icon" />
+                <img src={error_icon} alt="error_icon" className='w-1/3' />
                 <p className='text-2xl text-gray-500'>please check link</p>
                 <Link className='bg-black text-white px-10 py-4 hover:bg-[#5F6FFF] transition-all duration-300 rounded-full' to="/">
                     Go Back

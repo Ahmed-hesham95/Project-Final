@@ -94,7 +94,7 @@ export default function Doctors() {
                 console.log("Navigating to:", `/appointment/${item._id}`);
                 navigate(`/appointment/${item._id}`);
               }}
-              className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-2.5 transition-all duration-500"
+              className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:-translate-y-2.5 transition-all duration-500 bg-white"
               key={index}
             >
               <img className="bg-blue-50" src={item.image} alt="" />

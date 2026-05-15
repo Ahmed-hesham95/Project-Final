@@ -10,7 +10,7 @@ import MainLayout from './layouts/MainLayout';
 import Appointment from './pages/Appointment';
 import { Toaster } from 'react-hot-toast';
 import ErrorPage from './pages/ErrorPage';
-import ProtectedRoute from './layouts/ProtectedRoute';
+// import ProtectedRoute from './layouts/ProtectedRoute';
 
 export default function App() {
   return (
@@ -44,14 +44,14 @@ export default function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/doctors' element={<Doctors />} />
           <Route path='/doctors/:speciality' element={<Doctors />} />
-          <Route element={<ProtectedRoute />}>
-            <Route path='/my-profile' element={<MyProfile />} />
-            <Route path='/my-appointments' element={<MyAppointments />} />
-            <Route path="/appointment/:docId" element={<Appointment />} />
-          </Route>
+          <Route path='/my-profile' element={<MyProfile />} />
+          <Route path='/my-appointments' element={<MyAppointments />} />
+          <Route path="/appointment/:docId" element={<Appointment />} />
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='*' element={<ErrorPage />} />
+        {/* <Route element={<ProtectedRoute />}>
+        </Route> */}
       </Routes>
     </div>
   );

@@ -1,18 +1,18 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import '../Login.css';
 import { FaEnvelope, FaEye, FaUser } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
 import { LuEyeClosed } from 'react-icons/lu';
-import api from '../api/Axios';
 
 export default function Login() {
   const [isActive, setIsActive] = useState(false);
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
+
   // Protected Routes
   useEffect(() => {
     const token = localStorage.getItem('token') || sessionStorage.getItem('token');
@@ -21,55 +21,120 @@ export default function Login() {
     }
   }, [navigate]);
 
-  //  Login Logic
+  /* ==============================================
+     OLD BACKEND LOGIC
+     ==============================================
+  // import api from '../api/Axios';
+
+  // ============= Login Logic (Backend)
+  // const loginSchema = Yup.object({
+  //   identifier: Yup.string().required(),
+  //   password: Yup.string().required().min(4),
+  // });
+
+  // const handleLoginSubmit = (values) => {
+  //   // let domain = 'http://82.112.241.233:2001/api';
+  //   let url = '/auth/local';
+  //   api
+  //     .post(url, values)
+  //     .then((res) => {
+  //       console.log(res);
+  //       let token = res.data.jwt;
+  //       console.log(token);
+  //       values.remember ? localStorage.setItem('token', token) : sessionStorage.setItem('token', token);
+  //       toast.success('Login Success');
+  //       navigate('/');
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       toast.error(err.response.data.error.message) || toast.error(err.message);
+  //     });
+  // };
+
+  // ============== Register Logic (Backend)
+  // const registerSchema = Yup.object({
+  //   username: Yup.string().required(),
+  //   email: Yup.string().email().required(),
+  //   password: Yup.string().required().min(4).max(11),
+  // });
+
+  // const handleRegisterSubmit = (values) => {
+  //   // let domain = 'http://82.112.241.233:2001/api';
+  //   let url = '/auth/local/register';
+  //   api
+  //     .post(url, values)
+  //     .then((res) => {
+  //       let token = res.data.jwt;
+  //       sessionStorage.setItem('token', token);
+  //       toast.success('Register Success');
+  //       setIsActive(false);
+  //       navigate('/');
+  //       console.log('Register Values:', values);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.response.data.error.message);
+  //       toast.error(err.response.data.error.message);
+  //     });
+  // };
+  ============================================== */
+
+  // Login Logic (Local Storage)
   const loginSchema = Yup.object({
-    identifier: Yup.string().required(),
-    password: Yup.string().required().min(4),
+    identifier: Yup.string().required('Required'),
+    password: Yup.string().required('Required').min(4, 'Minimum 4 characters'),
   });
 
   const handleLoginSubmit = (values) => {
-    // let domain = 'http://82.112.241.233:2001/api';
-    let url = '/auth/local';
-    api
-      .post(url, values)
-      .then((res) => {
-        console.log(res);
-        let token = res.data.jwt;
-        console.log(token);
-        values.remember ? localStorage.setItem('token', token) : sessionStorage.setItem('token', token);
-        toast.success('Login Success');
-        navigate('/');
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error(err.response.data.error.message) || toast.error(err.message);
-      });
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const user = users.find(
+      (u) =>
+        (u.email === values.identifier || u.username === values.identifier) &&
+        u.password === values.password
+    );
+
+    if (user) {
+      const token = btoa(user.email + ':' + user.password); // Generate fake token
+      if (values.remember) {
+        localStorage.setItem('token', token);
+      } else {
+        sessionStorage.setItem('token', token);
+      }
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      toast.success('Login Success');
+      navigate('/');
+    } else {
+      toast.error('Invalid identifier or password');
+    }
   };
 
   // Register Logic
   const registerSchema = Yup.object({
-    username: Yup.string().required(),
-    email: Yup.string().email().required(),
-    password: Yup.string().required().min(4).max(11),
+    username: Yup.string().required('Required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+    password: Yup.string()
+      .required('Required')
+      .min(4, 'Minimum 4 characters')
+      .max(11, 'Maximum 11 characters'),
   });
 
   const handleRegisterSubmit = (values) => {
-    // let domain = 'http://82.112.241.233:2001/api';
-    let url = '/auth/local/register';
-    api
-      .post(url, values)
-      .then((res) => {
-        let token = res.data.jwt;
-        sessionStorage.setItem('token', token);
-        toast.success('Register Success');
-        setIsActive(false);
-        navigate('/');
-        console.log('Register Values:', values);
-      })
-      .catch((err) => {
-        console.log(err.response.data.error.message);
-        toast.error(err.response.data.error.message);
-      });
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const userExists = users.find((u) => u.email === values.email);
+
+    if (userExists) {
+      toast.error('Email already exists');
+      return;
+    }
+
+    users.push(values);
+    localStorage.setItem('users', JSON.stringify(users));
+
+    const token = btoa(values.email + ':' + values.password); // Generate fake token
+    sessionStorage.setItem('token', token);
+    localStorage.setItem('currentUser', JSON.stringify(values));
+    toast.success('Register Success');
+    setIsActive(false);
+    navigate('/');
   };
 
   return (
@@ -200,7 +265,7 @@ export default function Login() {
               <p className='text-lg mt-4 text-[#eef9fd]/90 text-center leading-relaxed'>Enter your personal details and start your journey with us</p>
               <button
                 className={`cursor-pointer border-2 border-white hover:bg-white hover:text-primary w-48 h-[50px] mt-6 text-white font-bold rounded-full mx-auto transition-all duration-300 shadow-md`}
-                onClick={() => setIsActive(!isActive)}
+                onClick={() => { setIsActive(!isActive); navigate('/'); }}
               >
                 Log In
               </button>
