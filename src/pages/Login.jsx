@@ -154,7 +154,7 @@ export default function Login() {
               <Form className='form-box absolute right-0 w-1/2 h-full flex flex-col justify-center p-10 text-center transition-all duration-700 z-10'>
                 <h1 className='text-4xl font-bold text-white mb-6 tracking-wide drop-shadow-sm'>Login</h1>
                 <div className='h-[18%]'>
-                  <div className='relative my-[10px]'>
+                  <div className='relative my-2.5'>
                     <Field
                       name='identifier'
                       type='email'
@@ -167,7 +167,7 @@ export default function Login() {
                 </div>
 
                 <div className='h-[18%]'>
-                  <div className='relative my-[10px]'>
+                  <div className='relative my-2.5'>
                     <Field
                       type={`${isShown ? 'text' : 'password'}`}
                       name='password'
@@ -210,7 +210,7 @@ export default function Login() {
               <Form className='form-box register absolute right-0 w-1/2 h-full flex flex-col justify-center p-10 text-center z-10 transition-all duration-700'>
                 <h1 className='text-4xl font-bold text-white mb-6 tracking-wide drop-shadow-sm'>Sign Up</h1>
                 <div className='h-[18%]'>
-                  <div className='relative my-[10px]'>
+                  <div className='relative my-2.5'>
                     <Field name='username' type='text' placeholder='Username' className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300' />
                     <FaUser className='absolute right-5 top-1/2 -translate-y-1/2 text-xl text-white/80' />
                   </div>
@@ -218,7 +218,7 @@ export default function Login() {
                 </div>
 
                 <div className='h-[18%]'>
-                  <div className='relative my-[10px]'>
+                  <div className='relative my-2.5'>
                     <Field name='email' type='email' placeholder='Email' className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300' />
                     <FaEnvelope className='absolute right-5 top-1/2 -translate-y-1/2 text-xl text-white/80' />
                   </div>
@@ -226,7 +226,7 @@ export default function Login() {
                 </div>
 
                 <div className='h-[18%]'>
-                  <div className='relative my-[10px]'>
+                  <div className='relative my-2.5'>
                     <Field name='password' type={`${isShown ? 'text' : 'password'}`} placeholder='Password' className='w-full p-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/70 outline-none focus:bg-white/20 focus:border-white/50 focus:shadow-[0_0_15px_rgba(0,180,216,0.3)] transition-all duration-300' />
                     {
                       isShown
@@ -265,7 +265,7 @@ export default function Login() {
               <p className='text-lg mt-4 text-[#eef9fd]/90 text-center leading-relaxed'>Enter your personal details and start your journey with us</p>
               <button
                 className={`cursor-pointer border-2 border-white hover:bg-white hover:text-primary w-48 h-[50px] mt-6 text-white font-bold rounded-full mx-auto transition-all duration-300 shadow-md`}
-                onClick={() => { setIsActive(!isActive); navigate('/'); }}
+                onClick={() => { setIsActive(!isActive); }}
               >
                 Log In
               </button>
