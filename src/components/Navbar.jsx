@@ -62,8 +62,8 @@ const Navbar = () => {
           </NavLink>
         </ul>
 
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             {
               token
                 ? <div ref={dropdownRef} className="flex items-center gap-2 cursor-pointer group relative">
@@ -81,11 +81,11 @@ const Navbar = () => {
                     </div>
                   )}
                 </div>
-                : <button onClick={() => navigate('/login')} className="cursor-pointer bg-primary text-white px-8 py-3 rounded-full font-light hidden md:block">Create account</button>
+                : <button onClick={() => navigate('/login')} className="cursor-pointer bg-primary text-white px-4 py-2 sm:px-8 sm:py-3 rounded-full font-light text-xs sm:text-sm">Create account</button>
             }
           </div>
           <div className="md:hidden">
-            <button onClick={toggleMenu} className="cursor-pointer">
+            <button onClick={toggleMenu} className="cursor-pointer p-1">
               {
                 showMobileMenu ? <CgClose className="text-2xl text-[#1F2937]" /> : <CgMenuRightAlt className="text-2xl text-[#1F2937]" />
               }
