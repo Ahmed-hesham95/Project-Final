@@ -8,6 +8,7 @@ import MyProfile from './pages/MyProfile';
 import MyAppointments from './pages/MyAppointments';
 import MainLayout from './layouts/MainLayout';
 import Appointment from './pages/Appointment';
+import PatientInfo from './pages/PatientInfo';
 import { Toaster } from 'react-hot-toast';
 import ErrorPage from './pages/ErrorPage';
 // import ProtectedRoute from './layouts/ProtectedRoute';
@@ -47,6 +48,7 @@ export default function App() {
           <Route path='/my-profile' element={<MyProfile />} />
           <Route path='/my-appointments' element={<MyAppointments />} />
           <Route path="/appointment/:docId" element={<Appointment />} />
+          <Route path="/patient-info" element={<PatientInfo />} />
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='*' element={<ErrorPage />} />

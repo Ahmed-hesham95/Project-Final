@@ -12,7 +12,7 @@ import 'swiper/css';
 export default function Appointment() {
   const { docId } = useParams();
   const navigate = useNavigate();
-  const { doctors, currencySymbol, bookAppointment } = useContext(AppContext);
+  const { doctors, currencySymbol, setTempBooking } = useContext(AppContext);
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const docInfo = doctors.find((doc) => doc._id === docId);
   const [docSlots, setDocSlots] = useState([]);
@@ -70,10 +70,13 @@ export default function Appointment() {
     const year = selectedSlotDate.getFullYear();
     const formattedDate = `${day}, ${month}, ${year}`;
 
-    const success = bookAppointment(docInfo, formattedDate, slotTime);
-    if (success) {
-      navigate('/my-appointments');
-    }
+    setTempBooking({
+      doctor: docInfo,
+      slotDate: formattedDate,
+      slotTime
+    });
+    
+    navigate('/patient-info');
   };
 
   useEffect(() => {

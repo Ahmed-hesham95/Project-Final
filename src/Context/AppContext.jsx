@@ -10,8 +10,9 @@ export default function AppContextProvider(props) {
   const [appointments, setAppointments] = useState(() => {
     return JSON.parse(localStorage.getItem('appointments')) || [];
   });
+  const [tempBooking, setTempBooking] = useState(null);
 
-  const bookAppointment = (doctor, slotDate, slotTime) => {
+  const bookAppointment = (doctor, slotDate, slotTime, patientData) => {
     // Check if slot is already booked for this doctor
     const isBooked = appointments.some(
       app => app.doctor._id === doctor._id && app.slotDate === slotDate && app.slotTime === slotTime && !app.isCancelled
@@ -26,6 +27,7 @@ export default function AppContextProvider(props) {
       doctor,
       slotDate,
       slotTime,
+      patient: patientData,
       isCancelled: false,
       isPaid: false
     };
@@ -59,6 +61,8 @@ export default function AppContextProvider(props) {
     doctors,
     currencySymbol,
     appointments,
+    tempBooking,
+    setTempBooking,
     bookAppointment,
     cancelAppointment,
     payAppointment

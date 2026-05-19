@@ -43,6 +43,23 @@ export default function MyAppointments() {
               <p className="text-zinc-700 font-medium pb-1">Address:</p>
               <p className="text-xs text-zinc-500">{item.doctor.address.line1}</p>
               <p className="text-xs text-zinc-500">{item.doctor.address.line2}</p>
+              
+              {/* Dynamic Patient Details */}
+              {item.patient && (
+                <div className="mt-3 p-3 bg-indigo-50/50 border border-indigo-100 rounded-xl space-y-1 max-w-md animate-fade-in">
+                  <p className="text-[10px] text-indigo-700 font-bold uppercase tracking-wider">Patient Details</p>
+                  <p className="text-sm text-zinc-800 font-semibold">
+                    {item.patient.fullName} <span className="text-zinc-500 font-normal">({item.patient.age} Yrs, {item.patient.gender})</span>
+                  </p>
+                  <p className="text-xs text-zinc-500">
+                    <span className="font-semibold text-zinc-600">Phone:</span> {item.patient.phone}
+                  </p>
+                  <p className="text-xs text-zinc-600 leading-relaxed mt-1">
+                    <span className="font-semibold text-zinc-700">Symptoms:</span> {item.patient.symptoms}
+                  </p>
+                </div>
+              )}
+
               <p className="text-xs mt-3 bg-zinc-50 py-1.5 px-3 rounded-md inline-block border border-zinc-100">
                 <span className="text-sm text-zinc-700 font-semibold">Date & Time: </span> 
                 <span className="text-zinc-600 font-medium">{item.slotDate} | {item.slotTime}</span>
